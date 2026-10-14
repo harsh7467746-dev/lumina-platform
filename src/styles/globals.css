@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-canvas: #F6F8FC;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+
+    --glass-substrate: rgba(255, 255, 255, 0.75);
+    --glass-card: rgba(255, 255, 255, 0.88);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.95);
+
+    --accent-primary: #4F46E5;
+    --accent-glow: rgba(79, 70, 229, 0.25);
+  }
+
+  .dark {
+    --bg-canvas: #08090D;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #475569;
+
+    --glass-substrate: rgba(14, 17, 26, 0.72);
+    --glass-card: rgba(22, 27, 40, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-highlight: rgba(255, 255, 255, 0.16);
+
+    --accent-primary: #6366F1;
+    --accent-glow: rgba(99, 102, 241, 0.35);
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Apple-grade Liquid Glass Surfaces */
+.glass-panel {
+  background: var(--glass-substrate);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card-elevated {
+  background: var(--glass-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.12),
+              inset 0 1px 0 0 var(--glass-highlight);
+}
+
+.glass-pill {
+  background: var(--glass-substrate);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Custom Fluid Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.45);
+}
+
+/* Dynamic Ambient Canvas Lighting */
+.ambient-glow-bg,
+.ambient-glow-1,
+.ambient-glow-2 {
+  pointer-events: none !important;
+}
+
+.ambient-glow-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-glow-1 {
+  position: absolute;
+  top: -15%;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.ambient-glow-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 15%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, transparent 70%);
+  filter: blur(90px);
+}
